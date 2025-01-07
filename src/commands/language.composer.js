@@ -1,5 +1,5 @@
 import { Composer, Keyboard } from 'grammy';
-import { showMenuMiddleware } from '../mildwares/menu.middleware.js';
+import { showMenuMiddleware } from '../midlwares/menu.middleware.js';
 
 export const languageComposer = new Composer();
 
@@ -7,7 +7,11 @@ languageComposer.command('language', async (ctx) => {
   if (ctx.session.lang) {
     ctx.session.isChoosingLanguage = true;
     await ctx.reply('Choose a language:', {
-      reply_markup: new Keyboard().text('Русский').text('English').oneTime().resized(),
+      reply_markup: new Keyboard()
+        .text('Русский')
+        .text('English')
+        .oneTime()
+        .resized(),
     });
   }
 });
@@ -18,10 +22,10 @@ languageComposer.hears('Русский', async (ctx, next) => {
     ctx.session.lang = 'ru';
     await ctx.i18n.setLocale('ru');
     await ctx.reply('Язык изменен на Русский');
-    ctx.session.isChoosingLanguage = false; 
-    await showMenuMiddleware(ctx,next);
+    ctx.session.isChoosingLanguage = false;
+    await showMenuMiddleware(ctx, next);
   } else {
-    await next(); 
+    await next();
   }
 });
 
@@ -32,9 +36,8 @@ languageComposer.hears('English', async (ctx, next) => {
     await ctx.i18n.setLocale('en');
     await ctx.reply('Language changed to English');
     ctx.session.isChoosingLanguage = false;
-    await showMenuMiddleware(ctx,next);
+    await showMenuMiddleware(ctx, next);
   } else {
-    await next(); 
+    await next();
   }
 });
-
