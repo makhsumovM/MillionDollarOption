@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+*.log.*
+debug.log
+
+# Compiled files
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.old
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+*.~undo-tree~
+
+# Editor-specific
+.vscode/
+.idea/
+*.iml
+
+# Grammy session files (если вы используете файловое хранилище сессий)
+sessions/
+
+# Test coverage reports
+coverage/
+.nyc_output/
